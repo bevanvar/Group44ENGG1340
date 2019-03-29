@@ -21,6 +21,7 @@ Since the repository will be open to the public, anyone can get started with thi
 6) Alerts when commodity is out-of-stock
 #### Additional Features
 1) Monitoring of expiry dates of commodities, if any, and alerts for the same  
+2) Analysis of commodities by demand (popularity)  
 
 We aim to complete the **required features** and add any **additional features** that seem feasible as we go about developing our program's code. 
 
