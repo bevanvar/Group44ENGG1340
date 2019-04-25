@@ -81,6 +81,7 @@ void update(commodity *&item, int count)
 		default:
 			cout<<"Invalid entry!"<<endl;
 }
+}
 
 int main()
 {
@@ -112,7 +113,7 @@ int main()
 			string name;
 			cout << "Name of product to be deleted?" << endl;
 			cin >> name;
-			insert(name, &item);
+			
 			break;
 		}
 		case 'D':
