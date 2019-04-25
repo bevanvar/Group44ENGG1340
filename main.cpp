@@ -1,9 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int n = 10;
-
-struct item
+struct commodity
 {
 	string itemname;
 	string manufacturer;
@@ -12,9 +10,17 @@ struct item
 	bool instock; //true if in stock (quantity!=0), false if out of stock
 	int numsold;
 };
-void grow_phonebook(item * &inventory, int &invetory_size, int n)
-{
 
+void insert(commodity *&item, int &count)
+{
+	cout<<"Enter item name, manufacturer, quantity and price:"<<endl;
+	cin>>item[count].itemname>>item[count].manufacturer>>item[count].quantity>>item[count].price;
+	if(item[count].quantity==0)
+	item[count].instock = false;
+	else
+	item[count].instock = true;'
+	item[count].numsold = 0;
+	count++;
 }
 
 
@@ -30,16 +36,12 @@ void search(string productname, item * inventory)
   }
 }
 
-void insert(string newname, item * inventory)
-{
-
-}
-
 void delete(string name, )
 
 int main()
 {
-	item * inventory = new item [n];
+	commodity *item = new commodity[size];
+	int count = 0;
 	char command;
 	cout << "What would you like to do today? Press A to search, B to insert, C to delete, D to update, E to show full inventory and F to sort by popularity." << endl;
 	cin << command;
