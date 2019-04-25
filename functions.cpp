@@ -30,9 +30,9 @@ void details(commodity x)
 void warn(commodity x)
 {
   if(x.quantity==0)
-  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is out of stock! Replace immediately."
+  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is out of stock! Replace immediately."<<endl;
   else if(x.quantity<=5)
-  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is almost out of stock! Replace soon."
+  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is almost out of stock! Replace soon."<<endl;
   return;
 }
 
@@ -98,6 +98,7 @@ void update(commodity *&item, int count)
 			item[sn].quantity+=n;
 			if(item[sn].quantity>0)
 			item[sn].instock = true;
+			warn(item[sn]);
 			break;
 		}
 		case 2:
@@ -110,10 +111,9 @@ void update(commodity *&item, int count)
 			}
 			item[sn].quantity-=n;
 			item[sn].sales+=n;
-			if(item[sn].quantity==0) {
-				item[sn].instock = false;
-				cout<<"\""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" is now out of stock!"<<endl;
-			}
+			if(item[sn].quantity==0)
+			item[sn].instock = false;
+			warn(item[sn]);
 			break;
 		}
 		case 3:
@@ -121,6 +121,7 @@ void update(commodity *&item, int count)
 			cout<<"Enter the new price of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" :"<<endl;
 			cin>>item[sn].price;
 			break;
+			warn(item[sn]);
 		}
 		default:
 		{
@@ -244,5 +245,8 @@ void search(commodity *&item, int count) {
 		{
 			cout<<"Invalid choice!"<<endl;
 		}
+	}
+	for(int i=0; i<count;i++) {
+		warn(item[i]);
 	}
 }
