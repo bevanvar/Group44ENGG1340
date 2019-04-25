@@ -12,8 +12,9 @@ struct commodity
 	int serialno;
 };
 
-void insert(commodity *&item, int &count)
+void insert(commodity *&item, int &count, int &sncount)
 {
+	//change this to getline for each case
 	cout<<"Enter item name, manufacturer, quantity and price:"<<endl;
 	cin>>item[count].itemname>>item[count].manufacturer>>item[count].quantity>>item[count].price;
 	if(item[count].quantity==0)
@@ -21,18 +22,19 @@ void insert(commodity *&item, int &count)
 	else
 	item[count].instock = true;
 	item[count].numsold = 0;
-	item[count].serialno = count+1;
+	item[count].serialno = sncount;
 	count++;
+	sncount++;
 	//ADD THE INCREASE SIZE OF INVENTORY FUNCTION!
 }
 
 void update(commodity *&item, int count)
 {
 	int sn, choice;
-	cout<<"Enter serial number of item:"<<endl;
+	cout<<"Enter serial number of commodity:"<<endl;
 	cin>>sn;
 	int flag = 0;
-	for(int i=0;i<=count;i++) {
+	for(int i=0;i<count;i++) {
 		if(item[i].serialno==sn) {
 			flag = 1;
 			sn = i;
@@ -42,11 +44,11 @@ void update(commodity *&item, int count)
 		cout<<"Invalid serial number!"<<endl;
 		return;
 	}
-	//serial number shouldn't be deleted - switch this to name and manufacturer?
-	//check if within inventory size!
 	cout<<"Press\n1 for procurement of items,\n2 for sale of items,\n or 3 to change the price:"<<endl;
 	cin>>choice;
 	switch(choice) {
+		//change each case to just enter units in the first part, and then display details after change in the second part
+		//add the warning function to each case
 		case 1:
 			int n;
 			cout<<"Enter number of units of \""<<item[sno].manufacturer<<" "<<item[sno].itemname<<"\" procured:"<<endl;
@@ -78,8 +80,33 @@ void update(commodity *&item, int count)
 			cout<<"Invalid entry!"<<endl;
 }
 
+void delete(commodity *&item, int &count)
+{
+	int sn, choice;
+	cout<<"Enter serial number of commodity:"<<endl;
+	cin>>sn;
+	int flag = 0;
+	for(int i=0;i<count;i++) {
+		if(item[i].serialno==sn) {
+			flag = 1;
+			sn = i;
+			break;
+		}
+	}
+	if(flag==0) {
+		cout<<"Invalid serial number!"<<endl;
+		return;
+	}
+	for(int i=sn;i+1<count;i++) {
+		item[i] = item[i+1];
+	}
+	count--;
+	cout<<"Successfully deleted!"<<endl;
+}
+
 int main()
 {
+	int sncount = 1;
 	commodity *item = new commodity[size];
 	int count = 0;
 	char command;
