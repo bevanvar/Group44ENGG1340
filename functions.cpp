@@ -131,7 +131,7 @@ void search(commodity *&item, int count) {
 			if(flag==0)
 			cout<<"Item not found!"<<endl;
 			else {
-				cout<<"|Sl.No.|    Manufacturer   |   Item Name   |Quantity| Sales |Price($)|Stock|"<<endl;
+				cout<<"|Sl.No.|   Item Name   |    Manufacturer   |Quantity| Sales |Price($)|Stock|"<<endl;
 				for(int i=0;i<count;i++) {
 					if(item[i].serialno==sn)
 					details(item[i]);
@@ -151,7 +151,7 @@ void search(commodity *&item, int count) {
 			if(flag==0)
 			cout<<"Item not found!"<<endl;
 			else {
-				cout<<"|Sl.No.|    Manufacturer   |   Item Name   |Quantity| Sales |Price($)|Stock|"<<endl;
+				cout<<"|Sl.No.|   Item Name   |    Manufacturer   |Quantity| Sales |Price($)|Stock|"<<endl;
 				for(int i=0;i<count;i++) {
 					if(item[i].itemname==name)
 					details(item[i]);
@@ -171,7 +171,7 @@ void search(commodity *&item, int count) {
 			if(flag==0)
 			cout<<"Manufacturer not found!"<<endl;
 			else {
-				cout<<"|Sl.No.|    Manufacturer   |   Item Name   |Quantity| Sales |Price($)|Stock|"<<endl;
+				cout<<"|Sl.No.|   Item Name   |    Manufacturer   |Quantity| Sales |Price($)|Stock|"<<endl;
 				for(int i=0;i<count;i++) {
 					if(item[i].manufacturer==name) {
 						details(item[i]);
@@ -192,7 +192,7 @@ void search(commodity *&item, int count) {
 			if(flag==0)
 			cout<<"No items found!"<<endl;
 			else {
-				cout<<"|Sl.No.|    Manufacturer   |   Item Name   |Quantity| Sales |Price($)|Stock|"<<endl;
+				cout<<"|Sl.No.|   Item Name   |    Manufacturer   |Quantity| Sales |Price($)|Stock|"<<endl;
 				for(int i=0;i<count;i++) {
 					if(item[i].instock==stockch) {
 						details(item[i]);
