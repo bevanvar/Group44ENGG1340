@@ -8,9 +8,13 @@ struct commodity
 	int quantity;
 	double price; //always set to 2 digits
 	bool instock; //true if in stock (quantity!=0), false if out of stock
-	int numsold;
+	int sales;
 	int serialno;
 };
+
+void details(commodity x);
+void warn(commodity x);
+
 
 void insert(commodity *&item, int &count, int &sncount)
 {
@@ -18,10 +22,10 @@ void insert(commodity *&item, int &count, int &sncount)
 	cout<<"Enter item name, manufacturer, quantity and price:"<<endl;
 	cin>>item[count].itemname>>item[count].manufacturer>>item[count].quantity>>item[count].price;
 	if(item[count].quantity==0)
-	item[count].instock = false;
+	item[count].instock = 0;
 	else
-	item[count].instock = true;
-	item[count].numsold = 0;
+	item[count].instock = 1;
+	item[count].sales = 0;
 	item[count].serialno = sncount;
 	count++;
 	sncount++;
@@ -51,29 +55,30 @@ void update(commodity *&item, int count)
 		//add the warning function to each case
 		case 1:
 			int n;
-			cout<<"Enter number of units of \""<<item[sno].manufacturer<<" "<<item[sno].itemname<<"\" procured:"<<endl;
+			cout<<"Enter number of units of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" procured:"<<endl;
 			cin>>n;
-			item[sno].quantity+=n;
+			item[sn].quantity+=n;
 			break;
 
 		case 2:
 			int n;
-			cout<<"Enter number of units of \""<<item[sno].manufacturer<<" "<<item[sno].itemname<<"\" sold:"<<endl;
+			cout<<"Enter number of units of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" sold:"<<endl;
 			cin>>n;
-			if(n>item[sno].quantity) {
+			if(n>item[sn].quantity) {
 				cout<<"Invalid entry!"<<endl;
 				break;
 			}
-			item[sno].quantity-=n;
-			if(item[sno].quantity==0) {
-				item[sno].instock = false;
-				cout<<"\""<<item[sno].manufacturer<<" "<<item[sno].itemname<<"\" is now out of stock!"<<endl;
+			item[sn].quantity-=n;
+			item[sn].sales+=n;
+			if(item[sn].quantity==0) {
+				item[sn].instock = false;
+				cout<<"\""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" is now out of stock!"<<endl;
 			}
 			break;
 
 		case 3:
-			cout<<"Enter the new price of \""<<item[sno].manufacturer<<" "<<item[sno].itemname<<"\" :"<<endl;
-			cin>>item[sno].price;
+			cout<<"Enter the new price of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" :"<<endl;
+			cin>>item[sn].price;
 			break;
 
 		default:
@@ -82,7 +87,7 @@ void update(commodity *&item, int count)
 
 void delete(commodity *&item, int &count)
 {
-	int sn, choice;
+	int sn;
 	cout<<"Enter serial number of commodity:"<<endl;
 	cin>>sn;
 	int flag = 0;
@@ -102,6 +107,94 @@ void delete(commodity *&item, int &count)
 	}
 	count--;
 	cout<<"Successfully deleted!"<<endl;
+}
+
+void search(commodity *&item, int count) {
+	int ch, flag = 0;
+	cout<<"Choose your search filter:\n1: Serial Number\n2: Item Name\n3: Manufacturer\n4: Stock Status"<<endl;
+	cin>>ch;
+	switch(ch) {
+		case 1:
+			int sn;
+			cout<<"Enter serial number:"<<endl;
+			cin>>sn;
+			for(int i=0;i<count;i++) {
+				if(item[i].serialno==sn)
+				flag = 1;
+			}
+			if(flag==0)
+			cout<<"Item not found!"<<endl;
+			else {
+				cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+				for(int i=0;i<count;i++) {
+					if(item[i].serialno==sn)
+					details(item[i]);
+				}
+			}
+			break;
+
+		case 2:
+			string name;
+			cout<<"Enter item name:"<<endl;
+			getline(cin,name);
+			for(int i=0;i<count;i++) {
+				if(item[i].itemname==name)
+				flag = 1;
+			}
+			if(flag==0)
+			cout<<"Item not found!"<<endl;
+			else {
+				cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+				for(int i=0;i<count;i++) {
+					if(item[i].itemname==name)
+					details(item[i]);
+				}
+			}
+			break;
+
+		case 3:
+		string name;
+		cout<<"Enter manufacturer name:"<<endl;
+		getline(cin,name);
+		for(int i=0;i<count;i++) {
+			if(item[i].manufacturer==name)
+			flag = 1;
+		}
+		if(flag==0)
+		cout<<"Manufacturer not found!"<<endl;
+		else {
+			cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+			for(int i=0;i<count;i++) {
+				if(item[i].manufacturer==name) {
+					details(item[i]);
+				}
+			}
+		}
+		break;
+
+		case 4:
+		int stockch;
+		cout<<"Enter 0 for out-of-stock, 1 for in-stock:"<<endl;
+		cin>>stockch;
+		for(int i=0;i<count;i++) {
+			if(item[i].instock==stockch)
+			flag = 1;
+		}
+		if(flag==0)
+		cout<<"No items found!"<<endl;
+		else {
+			cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+			for(int i=0;i<count;i++) {
+				if(item[i].manufacturer==stockch) {
+					details(item[i]);
+				}
+			}
+		}
+		break;
+
+		default:
+		cout<<"Invalid choice!"<<endl;
+		}
 }
 
 int main()
@@ -148,7 +241,7 @@ int main()
 		}
 		case 'F':
 		{
-			
+
 		}
 
 	}
