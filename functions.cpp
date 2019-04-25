@@ -6,17 +6,20 @@ struct commodity
 	string itemname;
 	string manufacturer;
 	int quantity;
-	double price; //always set to 2 digits
-	bool instock; //true if in stock (quantity!=0), false if out of stock
+	double price;
+	bool instock;
 	int sales;
 	int serialno;
 };
 
+void displayall();
+void sortbypopularity();
+void sortbyserialnumber();
 
 void details(commodity x)
 {
-  cout<<"|"<<left<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
-  <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<  x.sales<<"|"<<setw(8)<<x.price<<"|";
+  cout<<"|"<<right<<setw(6)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
+  <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<x.price<<"|";
   if(x.stock==0)
   cout<<"NO   |"<<endl;
   else
@@ -45,15 +48,14 @@ void increasesize(commodity *&item, int &size)
   return;
 }
 
-
 void insert(commodity *&item, int &count, int &sncount, int &size)
 {
 	if(count==size)
 	increasesize(item, size);
   cout<<"Enter item name:"<<endl;
-  cin>>item[count].itemname;
+  getline(cin,item[i].itemname);
   cout<<"Enter manufacturer name:"<<endl;
-  cin>>item[count].manufacturer;
+  getline(cin,item[i].manufacturer);
   cout<<"Enter quantity:"<<endl;
   cin>>item[count].quantity;
   cout<<"Enter price:"<<endl;
@@ -94,6 +96,8 @@ void update(commodity *&item, int count)
 			cout<<"Enter number of units of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" procured:"<<endl;
 			cin>>n;
 			item[sn].quantity+=n;
+			if(item[sn].quantity>0)
+			item[sn].instock = true;
 			break;
 		}
 		case 2:
