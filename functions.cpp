@@ -54,15 +54,22 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
 {
 	if(count==size)
 	increasesize(item, size);
-	cout<<"Enter item name, manufacturer, quantity and price:"<<endl;
-	cin>>item[count].itemname>>item[count].manufacturer>>item[count].quantity>>item[count].price;
-	if(item[count].quantity==0)
+  cout<<"Enter item name:"<<endl;
+  cin>>item[count].itemname;
+  cout<<"Enter manufacturer name:"<<endl;
+  cin>>item[count].manufacturer;
+  cout<<"Enter quantity:"<<endl;
+  cin>>item[count].quantity;
+  cout<<"Enter price:"<<endl;
+  cin>>item[count].price;
+  if(item[count].quantity==0)
 	item[count].instock = 0;
 	else
 	item[count].instock = 1;
 	item[count].sales = 0;
 	item[count].serialno = sncount;
 	count++;
+  sncount++;
 }
 
 void update(commodity *&item, int count)
