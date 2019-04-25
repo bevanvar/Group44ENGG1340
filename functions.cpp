@@ -12,6 +12,12 @@ struct commodity
 	int serialno;
 };
 
+void displayall();
+void sortbypopularity();
+void sortbyquantity();
+void sortbyserialnumber();
+void sortbyprice()
+
 void details(commodity x)
 {
   cout<<"|"<<right<<setw(6)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
