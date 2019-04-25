@@ -69,6 +69,18 @@ int main()
 			insert(name, &item);
 			break;
 		}
+		case 'D':
+		{
+
+		}
+		case 'E':
+		{
+
+		}
+		case 'F':
+		{
+			
+		}
 
 	}
 
