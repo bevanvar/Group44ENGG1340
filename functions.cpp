@@ -14,9 +14,7 @@ struct commodity
 
 void displayall();
 void sortbypopularity();
-void sortbyquantity();
 void sortbyserialnumber();
-void sortbyprice()
 
 void details(commodity x)
 {
@@ -55,9 +53,9 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
 	if(count==size)
 	increasesize(item, size);
   cout<<"Enter item name:"<<endl;
-  cin>>item[count].itemname;
+  getline(cin,item[i].itemname);
   cout<<"Enter manufacturer name:"<<endl;
-  cin>>item[count].manufacturer;
+  getline(cin,item[i].manufacturer);
   cout<<"Enter quantity:"<<endl;
   cin>>item[count].quantity;
   cout<<"Enter price:"<<endl;
@@ -98,6 +96,8 @@ void update(commodity *&item, int count)
 			cout<<"Enter number of units of \""<<item[sn].manufacturer<<" "<<item[sn].itemname<<"\" procured:"<<endl;
 			cin>>n;
 			item[sn].quantity+=n;
+			if(item[sn].quantity>0)
+			item[sn].instock = true;
 			break;
 		}
 		case 2:
