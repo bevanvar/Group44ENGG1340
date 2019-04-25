@@ -12,10 +12,37 @@ struct commodity
 	int serialno;
 };
 
-void details(commodity x);
-void warn(commodity x);
-void increasesize(commodity *&item, int &size);
-void displayall(commodity *&item, int count);
+void details(commodity x) 
+{
+  cout<<"|"<<left<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
+  <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<  x.sales<<"|"<<setw(8)<<x.price<<"|";
+  if(x.stock==0)
+  cout<<"NO   |"<<endl;
+  else
+  cout<<"YES  |"<<endl;
+  return;
+}
+
+void warn(commodity x)
+{
+  if(x.quantity==0)
+  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is out of stock! Replace immediately."
+  else if(x.quantity<=5)
+  cout<<"\""<<x.manufacturer<<" "<<x.itemname<<"\" is almost out of stock! Replace soon."
+  return;
+}
+
+void increasesize(commodity *&item, int &size)
+{
+  commodity *temp = new commodity[size+size];
+  for(int i=0;i<size;i++) {
+    temp[i] = item[i];
+  }
+  delete [] item;
+  item = temp;
+  size+=size;
+  return;
+}
 
 
 void insert(commodity *&item, int &count, int &sncount, int &size)
