@@ -6,16 +6,16 @@ struct commodity
 	string itemname;
 	string manufacturer;
 	int quantity;
-	double price; //always set to 2 digits
-	bool instock; //true if in stock (quantity!=0), false if out of stock
+	double price;
+	bool instock;
 	int sales;
 	int serialno;
 };
 
-void details(commodity x) 
+void details(commodity x)
 {
-  cout<<"|"<<left<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
-  <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<  x.sales<<"|"<<setw(8)<<x.price<<"|";
+  cout<<"|"<<right<<setw(6)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(19)<<x.manufacturer
+  <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<x.price<<"|";
   if(x.stock==0)
   cout<<"NO   |"<<endl;
   else
@@ -43,7 +43,6 @@ void increasesize(commodity *&item, int &size)
   size+=size;
   return;
 }
-
 
 void insert(commodity *&item, int &count, int &sncount, int &size)
 {
