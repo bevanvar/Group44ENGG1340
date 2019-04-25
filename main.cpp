@@ -3,7 +3,7 @@ using namespace std;
 
 const int n = 10;
 
-struct item 
+struct item
 {
 	string itemname;
 	string manufacturer;
@@ -23,25 +23,50 @@ void search(string productname, item * inventory)
 
   for(int count=0;count<n;count++)
   {
-    if(inventory[*count].itemname ==name)
+    if([*(inventory + count)].itemname ==name)
 		{
-			cout << item
+			cout <<  [*(inventory + count)];
 		}
   }
 }
+
+void insert(string newname, item * inventory)
+{
+
+}
+
+void delete(string name, )
+
 int main()
 {
 	item * inventory = new item [n];
 	char command;
-	cout << "What would you like to do today? Press A to search, B to insert, C to delete, D to update, E to show full inventory and F to sort by popularity.";
+	cout << "What would you like to do today? Press A to search, B to insert, C to delete, D to update, E to show full inventory and F to sort by popularity." << endl;
+	cin << command;
 	switch (command)
 	{
 		case 'A':
 		{
 			string name;
-			cout << "Name of product?";
+			cout << "Name of product?" << endl;
 			cin >> name;
-			search(name, item * inventory);
+			search(name, &item);
+			break;
+		}
+		case 'B':
+		{
+			string newname;
+			cout << "Name of new product?" << endl;
+			cin >> newname;
+			insert(newname, &item);
+			break;
+		}
+		case 'C':
+		{
+			string name;
+			cout << "Name of product to be deleted?" << endl;
+			cin >> name;
+			insert(name, &item);
 			break;
 		}
 
@@ -49,6 +74,7 @@ int main()
 
 
 	//ask user for their choice - switch cases
+	//delete all dynamic mem
 
 
 }
