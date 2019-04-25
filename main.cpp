@@ -14,6 +14,7 @@ struct commodity
 
 void details(commodity x);
 void warn(commodity x);
+void increasesize();
 
 
 void insert(commodity *&item, int &count, int &sncount)
@@ -42,15 +43,11 @@ void update(commodity *&item, int count)
 			sn = i;
 		}
 	}
-
 	if(flag==0)
 	{
 		cout<<"Invalid serial number!"<<endl;
 		return;
 	}
-
-	//serial number shouldn't be deleted - switch this to name and manufacturer?
-	//check if within inventory size!
 	cout<<"Press\n1 for procurement of items,\n2 for sale of items,\n or 3 to change the price:"<<endl;
 	cin>>choice;
 	switch(choice)
@@ -155,47 +152,47 @@ void search(commodity *&item, int count) {
 			break;
 
 		case 3:
-		string name;
-		cout<<"Enter manufacturer name:"<<endl;
-		getline(cin,name);
-		for(int i=0;i<count;i++) {
-			if(item[i].manufacturer==name)
-			flag = 1;
-		}
-		if(flag==0)
-		cout<<"Manufacturer not found!"<<endl;
-		else {
-			cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+			string name;
+			cout<<"Enter manufacturer name:"<<endl;
+			getline(cin,name);
 			for(int i=0;i<count;i++) {
-				if(item[i].manufacturer==name) {
-					details(item[i]);
+				if(item[i].manufacturer==name)
+				flag = 1;
+			}
+			if(flag==0)
+			cout<<"Manufacturer not found!"<<endl;
+			else {
+				cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+				for(int i=0;i<count;i++) {
+					if(item[i].manufacturer==name) {
+						details(item[i]);
+					}
 				}
 			}
-		}
-		break;
+			break;
 
 		case 4:
-		int stockch;
-		cout<<"Enter 0 for out-of-stock, 1 for in-stock:"<<endl;
-		cin>>stockch;
-		for(int i=0;i<count;i++) {
-			if(item[i].instock==stockch)
-			flag = 1;
-		}
-		if(flag==0)
-		cout<<"No items found!"<<endl;
-		else {
-			cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+			int stockch;
+			cout<<"Enter 0 for out-of-stock, 1 for in-stock:"<<endl;
+			cin>>stockch;
 			for(int i=0;i<count;i++) {
-				if(item[i].manufacturer==stockch) {
-					details(item[i]);
+				if(item[i].instock==stockch)
+				flag = 1;
+			}
+			if(flag==0)
+			cout<<"No items found!"<<endl;
+			else {
+				cout<<"Sl.No. Manufacturer      Item Name      Quantity Sold Price Stock"<<endl;
+				for(int i=0;i<count;i++) {
+					if(item[i].manufacturer==stockch) {
+						details(item[i]);
+					}
 				}
 			}
-		}
-		break;
+			break;
 
 		default:
-		cout<<"Invalid choice!"<<endl;
+			cout<<"Invalid choice!"<<endl;
 		}
 }
 
