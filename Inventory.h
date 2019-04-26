@@ -20,6 +20,8 @@ struct commodity
 class Inventory
 {
   public:
+					void intro();
+					void menu();
           void swap(commodity, commodity);
           void sortbypopularity(commodity, int);
           void sortbyserialnumber(commodity, int);
@@ -31,7 +33,7 @@ class Inventory
           void deletion(commodity, int);
           void search(commodity, int);
           void displayall(commodity, int);
-					void menu();
+
 };
 
 void swap(commodity &x, commodity &y)
