@@ -1,5 +1,3 @@
-
-
 #ifndef Inventory_h
 #define Inventory_h
 #include <iostream>
@@ -33,7 +31,7 @@ class Inventory
           void deletion(commodity, int);
           void search(commodity, int);
           void displayall(commodity, int);
-
+					void stockchecker(commodity, int);
 };
 
 void intro()
@@ -194,9 +192,7 @@ void update(commodity *&item, int count)
 			break;
 		}
 	}
-	for(int i=0; i<count;i++) {
-		warn(item[i]);
-	}
+	stockchecker(item, count);
 }
 
 void deletion(commodity *&item, int &count)
@@ -318,9 +314,7 @@ void search(commodity *&item, int count)
 			cout<<"Invalid choice!"<<"\n";
 		}
 	}
-	for(int i=0; i<count;i++) {
-		warn(item[i]);
-	}
+	stockchecker(item,count);
 }
 
 void displayall(commodity *&item, int count)
@@ -356,9 +350,9 @@ void displayall(commodity *&item, int count)
 	cout<<"There is 1 commodity in the inventory.\n";
 	else
 	cout<<"There are "<<count<<" commodities in the inventory.\n";
-	for(int i=0; i<count;i++) {
-		warn(item[i]);
-	}
+	stockchecker(item, count);
 }
+
+
 
 #endif
