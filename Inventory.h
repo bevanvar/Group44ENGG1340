@@ -36,7 +36,7 @@ class Inventory
 
 };
 
-void intro() 
+void intro()
 {
 	cout<<"*********************************************************"<<"\n";
   cout<<"*************** Welcome To Your Inventory! **************"<<"\n";
@@ -47,12 +47,13 @@ void intro()
   cout<<"*********************************************************"<<"\n";
 }
 
-void menu() 
+void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
   cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n0. Exit\n";
   cout<<"Enter your choice:"<<"\n";
 }
+
 void swap(commodity &x, commodity &y)
 {
 	commodity temp = x;
