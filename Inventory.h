@@ -32,7 +32,7 @@ class Inventory
           void search(commodity, int);
           void displayall(commodity, int);
 					void stockchecker(commodity, int);
-					void readinventory();
+					void readinventory(string, commodity, int);
 					void writeinventorytofile(string, commodity, int);
 };
 
@@ -373,6 +373,105 @@ void displayall(commodity *&item, int count)
 	for(int i=0;i<count;i++) {
     warn(item[i]);
   }
+}
+
+void readinventoryfromfile(string shopname, commodity *&item, int &count)
+{
+  ifstream fin;
+  fin.open(shopname.c_str());
+  if(fin.fail())
+  {
+    cout<<"Error opening input file."<<endl;
+    cout<<"Exiting program."<<endl;
+    exit(1);
+  }
+  string line;
+  getline(fin, line);
+  while(getline(fin, line))
+  {
+    int i;
+    string temp = line.substr(1, 4);
+    for(i=0;i<4;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].serialno = stoi(temp);
+    temp = line.substr(8, 19);
+    for(i=0;i<19;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].itemname = temp;
+    temp = line.substr(28, 20);
+    for(i=0;i<20;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].manufacturer = temp;
+    temp = line.substr(49, 8);
+    for(i=0;i<8;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].quantity = stoi(temp);
+    if(item[count].quantity>0)
+    item[count].instock = true;
+    else
+    item[count].instock = false;
+    temp = line.substr(58, 7);
+    for(i=0;i<7;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].sales = stoi(temp);
+    temp = line.substr(66, 8);
+    for(i=0;i<8;i++) {
+      if(temp[i]==' ')
+      temp.erase(i, 1);
+      else
+      break;
+    }
+    item[count].price = stod(temp);
+    count++;
+  }
+  cout<<"Successfully read from "<<shopname<<"\n"<<endl;
+}
+
+void writeinventorytofile(string shopname, commodity *&item, int count)
+{
+  ofstream fout;
+  fout.open(shopname.c_str());
+  if(fout.fail())
+  {
+    cout<<"Error opening output file."<<endl;
+    cout<<"Exiting program."<<endl;
+    exit(1);
+  }
+  fout<<"|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
+  //     012345678901234567890123456789012345678901234567890123456789012345678901234567890
+  sortbyserialnumber(item, count);
+  commodity x;
+  for(int i=0;i<count;i++) {
+    x = item[i];
+    fout<<"|"<<right<<setw(5)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
+    <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<fixed<<setprecision(2)<<x.price<<"|";
+    if(x.instock==0)
+    fout<<"   NO|"<<"\n";
+    else
+    fout<<"  YES|"<<"\n";
+  }
+  cout<<"Successfully wrote to "<<shopname<<"\n"<<endl;
+  fout.close();
 }
 
 void userchoice(int ch, commodity *&item, int &count, int &sncount, int &size)
