@@ -331,4 +331,7 @@ void displayall(commodity *&item, int count)
 	cout<<"There is 1 commodity in the inventory.\n";
 	else
 	cout<<"There are "<<count<<" commodities in the inventory.\n";
+	for(int i=0; i<count;i++) {
+		warn(item[i]);
+	}
 }
