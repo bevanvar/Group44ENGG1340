@@ -13,8 +13,41 @@ struct commodity
 };
 
 void displayall();
-void sortbypopularity();
-void sortbyserialnumber();
+void sortbypopularity(commodity *&item, int sizeOfArray)
+{
+	int i, j, idx;
+	int max;
+	string nameofmax;
+
+	for ( i = 0; i < sizeOfArray; ++i )
+	{
+		max = item.sales[i];
+		nameofmax = item.itemname[i];
+		idx = i;
+		for ( j = i + 1; j < sizeOfArray; ++j )
+		{
+		if ( item.sales[j] < min )
+		{
+			min = item.sales[j];
+			nameofmax = item.itemname[j];
+			idx = j;
+		}
+	}
+	if ( idx != i )
+		swap( item.sales[i], item.sales[idx] );
+		swap( item.itemname[i], item.itemname[idx] );
+}
+void swap(int &a, int &b)
+{
+     int tmp = a;
+     a = b;
+     b = tmp;
+     return;
+}
+void sortbyserialnumber()
+{
+
+}
 
 void details(commodity x)
 {
