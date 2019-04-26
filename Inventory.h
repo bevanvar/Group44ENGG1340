@@ -353,6 +353,11 @@ void displayall(commodity *&item, int count)
 	stockchecker(item, count);
 }
 
-
+void stockchecker(commodity *&item, int count) 
+{
+  for(int i=0;i<count;i++) {
+    warn(item[i]);
+  }
+}
 
 #endif
