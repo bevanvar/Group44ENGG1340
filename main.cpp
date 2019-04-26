@@ -1,55 +1,45 @@
-#include <iostream>
-using namespace std;
-
-struct commodity;
-void details(commodity x);
-void increasesize(commodity *&item, int &size);
-void insert(commodity *&item, int &count, int &sncount, int &size);
-void update(commodity *&item, int count);
-void delete(commodity *&item, int &count);
-void search(commodity *&item, int count);
-void display();
-void sortbypopularity();
-void sortbyserialnumber();
+#include "Inventory.h"
 
 int main()
 {
   int size = 10, sncount = 1, count = 0, ch;
 	commodity *item = new commodity[size];
-  cout<<"*********************************************************"<<endl;
-  cout<<"*************** Welcome To Your Inventory! **************"<<endl;
-  cout<<"*********************************************************"<<endl;
-  cout<<"*********************************************************"<<endl;
-  cout<<"*Bevan Varghese**************************Katyayani Singh*"<<endl;
-  cout<<"*GROUP 44***************************************ENGG1340*"<<endl;
-  cout<<"*********************************************************"<<endl;
+  cout<<"*********************************************************"<<"\n";
+  cout<<"*************** Welcome To Your Inventory! **************"<<"\n";
+  cout<<"*********************************************************"<<"\n";
+  cout<<"*********************************************************"<<"\n";
+  cout<<"*Bevan Varghese**************************Katyayani Singh*"<<"\n";
+  cout<<"*GROUP 44***************************************ENGG1340*"<<"\n";
+  cout<<"*********************************************************"<<"\n";
   cout<<"1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
-  cout<<"4. Search for a commodity (filtered)\n 5. Display all commodities (filtered)\n 0. Exit";
-  cout<<"Enter your choice:"<<endl;
+  cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n0. Exit\n";
+  cout<<"Enter your choice:"<<"\n";
   cin>>ch;
   while(ch!=0) {
     switch(ch)
     {
       case 1:
-      insert(commodity *&item, int &count, int &sncount, int &size);
+      insert(item, count, sncount, size);
       break;
       case 2:
-      update(commodity *&item, int count);
+      update(item, count);
       break;
       case 3:
-      delete(commodity *&item, int &count);
+      deletion(item, count);
       break;
       case 4:
-      search(commodity *&item, int count);
+      search(item, count);
       break;
       case 5:
-      //write the display function
+      displayall(item, count);
       break;
       default:
-      cout<<"Invalid choice, try again!"<<endl;
+      cout<<"Invalid choice, try again!"<<"\n";
       break;
     }
-    cout<<"Enter your choice:"<<endl;
+		cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
+	  cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n0. Exit\n";
+	  cout<<"Enter your choice:"<<"\n";
     cin>>ch;
   }
   cout<<"Goodbye, have a nice day!"<<endl;
