@@ -1,6 +1,7 @@
 #ifndef Inventory_h
 #define Inventory_h
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 using namespace std;
 
@@ -32,7 +33,7 @@ class Inventory
           void search(commodity, int);
           void displayall(commodity, int);
 					void stockchecker(commodity, int);
-					void readinventory(string, commodity, int);
+					void readinventoryfromfile(string, commodity, int);
 					void writeinventorytofile(string, commodity, int);
 };
 
