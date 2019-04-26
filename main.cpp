@@ -9,9 +9,9 @@ int main()
   cout<<"*********************************************************"<<"\n";
   cout<<"*********************************************************"<<"\n";
   cout<<"*Bevan Varghese**************************Katyayani Singh*"<<"\n";
-  cout<<"*GROUP 44***************************************ENGG1340*"<<"\n";
+  cout<<"*GROUP 44***************************************ENGG1340*";;
   cout<<"*********************************************************"<<"\n";
-  cout<<"1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
+  cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
   cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n0. Exit\n";
   cout<<"Enter your choice:"<<"\n";
   cin>>ch;

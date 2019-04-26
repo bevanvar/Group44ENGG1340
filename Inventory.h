@@ -31,17 +31,17 @@ class Inventory
           void deletion(commodity, int);
           void search(commodity, int);
           void displayall(commodity, int);
-					int main();
+					void menu();
 };
 
-void Inventory::swap(commodity &x, commodity &y)
+void swap(commodity &x, commodity &y)
 {
 	commodity temp = x;
 	x = y;
 	y = temp;
 }
 
-void Inventory::sortbypopularity(commodity *&item, int count)
+void sortbypopularity(commodity *&item, int count)
 {
 	for(int i=0;i<count-1;i++) {
 		for(int j=0;j<count-i-1;j++) {
@@ -52,7 +52,7 @@ void Inventory::sortbypopularity(commodity *&item, int count)
 	}
 }
 
-void Inventory::sortbyserialnumber(commodity *&item, int count)
+void sortbyserialnumber(commodity *&item, int count)
 {
 	for(int i=0;i<count-1;i++) {
 		for(int j=0;j<count-i-1;j++) {
@@ -63,7 +63,7 @@ void Inventory::sortbyserialnumber(commodity *&item, int count)
 	}
 }
 
-void Inventory::details(commodity x)
+void details(commodity x)
 {
   cout<<"|"<<right<<setw(5)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
   <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<fixed<<setprecision(2)<<x.price<<"|";
@@ -74,7 +74,7 @@ void Inventory::details(commodity x)
   return;
 }
 
-void Inventory::warn(commodity x)
+void warn(commodity x)
 {
   if(x.quantity==0)
   cout<<"NOTE: \""<<x.manufacturer<<" "<<x.itemname<<"\" is out of stock! Replace immediately."<<"\n";
@@ -83,7 +83,7 @@ void Inventory::warn(commodity x)
   return;
 }
 
-void Inventory::increasesize(commodity *&item, int &size)
+void increasesize(commodity *&item, int &size)
 {
   commodity *temp = new commodity[size+size];
   for(int i=0;i<size;i++) {
@@ -95,7 +95,7 @@ void Inventory::increasesize(commodity *&item, int &size)
   return;
 }
 
-void Inventory::insert(commodity *&item, int &count, int &sncount, int &size)
+void insert(commodity *&item, int &count, int &sncount, int &size)
 {
 	if(count==size)
 	increasesize(item, size);
@@ -118,7 +118,7 @@ void Inventory::insert(commodity *&item, int &count, int &sncount, int &size)
   sncount++;
 }
 
-void Inventory::update(commodity *&item, int count)
+void update(commodity *&item, int count)
 {
 	int sn, choice, n;
 	cout<<"Enter serial number of item:"<<"\n";
@@ -179,7 +179,7 @@ void Inventory::update(commodity *&item, int count)
 	}
 }
 
-void Inventory::deletion(commodity *&item, int &count)
+void deletion(commodity *&item, int &count)
 {
 	int sn;
 	cout<<"Enter serial number of commodity:"<<"\n";
@@ -203,7 +203,7 @@ void Inventory::deletion(commodity *&item, int &count)
 	cout<<"Successfully deleted!"<<"\n";
 }
 
-void Inventory::search(commodity *&item, int count)
+void search(commodity *&item, int count)
 {
 	int ch, flag = 0;
 	cout<<"Choose your search filter:\n1: Serial Number\n2: Item Name\n3: Manufacturer\n4: Stock Status"<<"\n";
@@ -303,7 +303,7 @@ void Inventory::search(commodity *&item, int count)
 	}
 }
 
-void Inventory::displayall(commodity *&item, int count)
+void displayall(commodity *&item, int count)
 {
 	int ch;
 	if(count==0) {
