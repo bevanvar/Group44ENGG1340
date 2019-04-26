@@ -32,6 +32,8 @@ class Inventory
           void search(commodity, int);
           void displayall(commodity, int);
 					void stockchecker(commodity, int);
+					void readinventory();
+					void writeinventorytofile(string, commodity, int);
 };
 
 void intro()
@@ -363,6 +365,7 @@ void displayall(commodity *&item, int count)
 			break;
 		}
 	}
+	cout<<"\n";
 	if(count==1)
 	cout<<"There is 1 commodity in the inventory.\n";
 	else
@@ -370,6 +373,34 @@ void displayall(commodity *&item, int count)
 	for(int i=0;i<count;i++) {
     warn(item[i]);
   }
+}
+
+void userchoice(int ch, commodity *&item, int &count, int &sncount, int &size)
+{
+	switch(ch)
+	{
+		case 1:
+		insert(item, count, sncount, size);
+		break;
+		case 2:
+		update(item, count);
+		break;
+		case 3:
+		deletion(item, count);
+		break;
+		case 4:
+		search(item, count);
+		break;
+		case 5:
+		displayall(item, count);
+		break;
+		case 6:
+		stockchecker(item, count);
+		break;
+		default:
+		cout<<"Invalid choice, try again!"<<"\n";
+		break;
+	}
 }
 
 #endif

@@ -8,30 +8,7 @@ int main()
   menu();
   cin>>ch;
   while(ch!=0) {
-    switch(ch)
-    {
-      case 1:
-      insert(item, count, sncount, size);
-      break;
-      case 2:
-      update(item, count);
-      break;
-      case 3:
-      deletion(item, count);
-      break;
-      case 4:
-      search(item, count);
-      break;
-      case 5:
-      displayall(item, count);
-      break;
-      case 6:
-      stockchecker(item, count);
-      break;
-      default:
-      cout<<"Invalid choice, try again!"<<"\n";
-      break;
-    }
+    userchoice(ch, item, count, sncount, size);
 		menu();
     cin>>ch;
   }
