@@ -48,7 +48,8 @@ void intro()
 void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
-  cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n0. Exit\n";
+  cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n";
+	cout<<"6. Check inventory for stock warnings\n0. Exit\n";
   cout<<"Enter your choice:"<<"\n";
 }
 
@@ -136,6 +137,18 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
   sncount++;
 }
 
+void stockchecker(commodity *&item, int count)
+{
+  int flag = 0;
+  for(int i=0;i<count;i++) {
+    if(item[i].quantity<=5)
+    flag = 1;
+    warn(item[i]);
+  }
+  if(flag==0)
+  cout<<"All commodities are sufficiently stocked!\n";
+}
+
 void update(commodity *&item, int count)
 {
 	int sn, choice, n;
@@ -192,7 +205,9 @@ void update(commodity *&item, int count)
 			break;
 		}
 	}
-	stockchecker(item, count);
+	for(int i=0;i<count;i++) {
+    warn(item[i]);
+  }
 }
 
 void deletion(commodity *&item, int &count)
@@ -314,7 +329,9 @@ void search(commodity *&item, int count)
 			cout<<"Invalid choice!"<<"\n";
 		}
 	}
-	stockchecker(item,count);
+	for(int i=0;i<count;i++) {
+    warn(item[i]);
+  }
 }
 
 void displayall(commodity *&item, int count)
@@ -350,12 +367,7 @@ void displayall(commodity *&item, int count)
 	cout<<"There is 1 commodity in the inventory.\n";
 	else
 	cout<<"There are "<<count<<" commodities in the inventory.\n";
-	stockchecker(item, count);
-}
-
-void stockchecker(commodity *&item, int count) 
-{
-  for(int i=0;i<count;i++) {
+	for(int i=0;i<count;i++) {
     warn(item[i]);
   }
 }

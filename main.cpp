@@ -25,6 +25,9 @@ int main()
       case 5:
       displayall(item, count);
       break;
+      case 6:
+      stockchecker(item, count);
+      break;
       default:
       cout<<"Invalid choice, try again!"<<"\n";
       break;
