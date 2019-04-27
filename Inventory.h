@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-//declaring a structure to represent a commodity with basic information 
+//declaring a structure to represent a commodity with basic information
 struct commodity
 {
 	string itemname;
