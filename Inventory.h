@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-//declaring a structure to represent a commodity with basic information 
+//declaring a structure to represent a commodity with basic information
 struct commodity
 {
 	string itemname;
@@ -160,11 +160,20 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
 {
 	if(count==size)
 	increasesize(item, size);
+	string tempname, tempmanu;
   cout<<"Enter item name:"<<"\n";
 	cin.ignore();
-  getline(cin,item[count].itemname);
+  getline(cin, tempname);
   cout<<"Enter manufacturer name:"<<"\n";
-  getline(cin,item[count].manufacturer);
+  getline(cin, tempmanu);
+	for(int i=0;i<count;i++) {
+		if(item[i].itemname==tempname && item[i].manufacturer==tempmanu) {
+			cout<<"Item already in inventory!";
+			return;
+		}
+	}
+	item[count].itemname = tempname;
+	item[count].manufacturer = tempmanu;
   cout<<"Enter quantity:"<<"\n";
   cin>>item[count].quantity;
   cout<<"Enter price:"<<"\n";
