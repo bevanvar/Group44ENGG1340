@@ -1,5 +1,5 @@
 #include "Inventory.h"
-//including the header file with all required functions
+//including the header file with all required functions 
 
 int main()
 {
