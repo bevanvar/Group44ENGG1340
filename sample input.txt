@@ -1,0 +1,4 @@
+|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|
+|     1|         Toothpaste|             Colgate|      15|      0|   12.50|  YES|
+|     2|            Bananas|           Del Monte|       2|      0|   13.00|  YES|
+|     3|              Razor|             Gilette|      25|      0|   35.00|  YES|
