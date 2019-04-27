@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 
+//declaring a structure to represent a commodity with basic information
 struct commodity
 {
 	string itemname;
@@ -20,6 +21,7 @@ struct commodity
 class Inventory
 {
   public:
+          //function declaration
 					void intro();
 					void menu();
           void swap(commodity, commodity);
@@ -38,6 +40,12 @@ class Inventory
 					void writeinventorytofile(string, commodity, int);
 };
 
+//Note: all the functions are void
+//"outputs" in function descriptions indicate the RESULT of the function and NOT THE RETURN-TYPE
+
+//introduction screen for the system
+//inputs: none
+//outputs: introduction message
 void intro()
 {
 	cout<<"*********************************************************"<<"\n";
@@ -49,6 +57,9 @@ void intro()
   cout<<"*********************************************************"<<"\n";
 }
 
+//main menu for the user
+//inputs: none
+//outputs: choices for the user to choose from
 void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
@@ -57,6 +68,9 @@ void menu()
   cout<<"Enter your choice:"<<"\n";
 }
 
+//swapping function to help with sorting
+//inputs: commodity x and commodity y - two commodities to be swappedy
+//outputs: result of swapping the two commodities - x and y
 void swap(commodity &x, commodity &y)
 {
 	commodity temp = x;
@@ -64,6 +78,10 @@ void swap(commodity &x, commodity &y)
 	y = temp;
 }
 
+//sort the commodities in the inventory by their popularity
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities in the array
+//outputs: array of commodities sorted in decreasing order of popularity (sales numbers)
 void sortbypopularity(commodity *&item, int count)
 {
 	for(int i=0;i<count-1;i++) {
@@ -75,6 +93,10 @@ void sortbypopularity(commodity *&item, int count)
 	}
 }
 
+//sort the commodities in the inventory by their serial numbers
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities in the array
+//outputs: array of commodities sorted in increasing order of
 void sortbyserialnumber(commodity *&item, int count)
 {
 	for(int i=0;i<count-1;i++) {
@@ -86,6 +108,9 @@ void sortbyserialnumber(commodity *&item, int count)
 	}
 }
 
+//outputs the details of a commodity in a tabular fashion
+//inputs: commodity x
+//outputs: details of the commodity
 void details(commodity x)
 {
   cout<<"|"<<right<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
@@ -97,6 +122,9 @@ void details(commodity x)
   return;
 }
 
+//checks if a commodity is out of stock or low on stock
+//inputs: commodity x
+//outputs: warning message if commodity is out of stock or almost out of stock
 void warn(commodity x)
 {
   if(x.quantity==0)
@@ -106,6 +134,10 @@ void warn(commodity x)
   return;
 }
 
+//increases the size of the inventory
+//inputs: commodity *&item - array of commodities
+//        int &size - size of int=inventory
+//outputs: inventory expanded to twice the size when the function is called
 void increasesize(commodity *&item, int &size)
 {
   commodity *temp = new commodity[size+size];
@@ -118,6 +150,12 @@ void increasesize(commodity *&item, int &size)
   return;
 }
 
+//inserts a commodity in the inventory
+//inputs: commodity *&item - array of commodities
+//        int &count - number of items in the inventory
+//        int &sncount - serial number counter for the inserted item
+//        int &size - size of the inventory
+//outputs: commodity will be inserted
 void insert(commodity *&item, int &count, int &sncount, int &size)
 {
 	if(count==size)
@@ -141,6 +179,10 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
   sncount++;
 }
 
+//checks the inventory for commodities out-of-stock/nearly out-of-stock
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities
+//outputs: relevant messages for out-of-stock, nearly out-of-stock or everything-in-stock
 void stockchecker(commodity *&item, int count)
 {
   int flag = 0;
@@ -153,6 +195,10 @@ void stockchecker(commodity *&item, int count)
   cout<<"All commodities are sufficiently stocked!\n";
 }
 
+//updates an existing commodity in the inventory
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities
+//outputs: updated commodity in the inventory
 void update(commodity *&item, int count)
 {
 	int sn, choice, n;
@@ -214,6 +260,10 @@ void update(commodity *&item, int count)
   }
 }
 
+//deletes an existing commodity in the inventory
+//inputs: commodity *&item - array of commodities
+//        int &count - number of commodities
+//outputs: commodity is removed from the inventory
 void deletion(commodity *&item, int &count)
 {
 	int sn;
@@ -238,6 +288,11 @@ void deletion(commodity *&item, int &count)
 	cout<<"Successfully deleted!"<<"\n";
 }
 
+//searches the inventory for a commodity
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities
+//outputs: commodities satisfying the search criteria, if found
+//         relevant message if no such commodities found
 void search(commodity *&item, int count)
 {
 	int ch, flag = 0;
@@ -338,6 +393,11 @@ void search(commodity *&item, int count)
   }
 }
 
+//displays all the commodities in the inventory
+//inputs: commodity *&item - array of commodities
+//        int count - number of commodities
+//outputs: displays all the commodties in the Inventory
+//         and the number of commodities in the inventory
 void displayall(commodity *&item, int count)
 {
 	int ch;
@@ -377,6 +437,12 @@ void displayall(commodity *&item, int count)
   }
 }
 
+//imports an inventory from an existing file named after the shop
+//inputs: string shopname - name of the shop (to import the .txt file)
+//        commodity *&item - array of commodities
+//        int &count - number of commodities
+//outputs: initialises an inventory if file exists
+//         prints relevant message if import fails
 void readinventoryfromfile(string shopname, commodity *&item, int &count)
 {
   ifstream fin;
@@ -428,6 +494,12 @@ void readinventoryfromfile(string shopname, commodity *&item, int &count)
   fin.close();
 }
 
+//writes the inventory to a file named after the shop
+//inputs: string shopname - name of the shop (to write to .txt file)
+//        commodity *&item - array of commodities
+//        int count - number of commodities
+//outputs: the inventory is written to a file named after the shopname
+//         prints relevant message if writing fails
 void writeinventorytofile(string shopname, commodity *&item, int count)
 {
   ofstream fout;
@@ -439,7 +511,6 @@ void writeinventorytofile(string shopname, commodity *&item, int count)
     exit(1);
   }
   fout<<"|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
-  //     012345678901234567890123456789012345678901234567890123456789012345678901234567890
   sortbyserialnumber(item, count);
   commodity x;
   for(int i=0;i<count;i++) {
