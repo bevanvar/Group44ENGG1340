@@ -6,7 +6,7 @@ int main()
   //initialising inventory size, serialnumber and number of commodities
   int size = 50, sncount = 1, count = 0, pref, ch;
   string shopname;
-	commodity *item = new commodity[size]; //dynamic array of commodities
+  commodity *item = new commodity[size]; //dynamic array of commodities
   intro();
   cout<<"Enter shop name:\n";
   getline(cin, shopname);
