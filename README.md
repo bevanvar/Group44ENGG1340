@@ -29,14 +29,13 @@ All data entered must be case-sensitive.
    - is out of stock
    - nearly out of stock
 #### Additional Features 
-1) Displays the whole inventory in order of serial number.
-2) Displays the whole inventory in order of demand (popularity based on number of sales). 
+1) Displays the whole inventory in order of serial number along with the number of commodities.
+2) Displays the whole inventory in order of demand (popularity based on number of sales) along with the number of commodities. 
 3) Imports an existing inventory from a .txt file named after the shop.
 4) Writes the updated inventory to a .txt file named after the shop.
 
 
-
-We aim to complete the **required features** and add any **additional features** that seem feasible as we go about developing our program's code. 
+### Instructions
 
 Katyayani Singh: ksingh@connect.hku.hk  
 Bevan Varghese: bevanvar@connect.hku.hk
