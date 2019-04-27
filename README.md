@@ -25,7 +25,7 @@ The program interface is menu-driven, allowing the user to execute functions acc
 5) **Automatic updation** of inventory status based on availability  
 6) Scan the inventory to **check** if any commodity 
    - is out of stock
-   - nearly out of stock
+   - is nearly out of stock
 #### Additional Features 
 1) **Display** the whole inventory in order of **serial number** along with the number of commodities.
 2) **Display** the whole inventory in order of **demand** (popularity based on number of sales) along with the number of commodities. 
