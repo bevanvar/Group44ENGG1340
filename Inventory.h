@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <string>
 using namespace std;
 
 struct commodity
@@ -51,8 +52,8 @@ void intro()
 void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
-  cout<<"4. Search for a commodity (filtered)\n5. Display all commodities (filtered)\n";
-	cout<<"6. Check inventory for stock warnings\n0. Exit\n";
+  cout<<"4. Search for a commodity (filtered)\n5. Check inventory for stock warnings\n";
+	cout<<"6. Display all commodities (filtered\n0. Exit\n";
   cout<<"Enter your choice:"<<"\n";
 }
 
@@ -87,7 +88,7 @@ void sortbyserialnumber(commodity *&item, int count)
 
 void details(commodity x)
 {
-  cout<<"|"<<right<<setw(5)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
+  cout<<"|"<<right<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
   <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<fixed<<setprecision(2)<<x.price<<"|";
   if(x.instock==0)
   cout<<"   NO|"<<"\n";
@@ -349,7 +350,7 @@ void displayall(commodity *&item, int count)
 	switch(ch) {
 		case 1:
 		{
-			cout<<"|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
+			cout<<"\n|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
 			sortbyserialnumber(item, count);
 			for(int i=0;i<count;i++) {
 				details(item[i]);
@@ -358,7 +359,7 @@ void displayall(commodity *&item, int count)
 		}
 		case 2:
 		{
-			cout<<"|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
+			cout<<"\n|Sl.No.|     Item Name     |    Manufacturer    |Quantity| Sales |Price($)|Stock|"<<"\n";
 			sortbypopularity(item, count);
 			for(int i=0;i<count;i++) {
 				details(item[i]);
@@ -386,49 +387,45 @@ void readinventoryfromfile(string shopname, commodity *&item, int &count)
     cout<<"Exiting program."<<endl;
     exit(1);
   }
-  string line;
+  string line, temp;
+  int startpos, endpos;
   getline(fin, line);
   while(getline(fin, line))
   {
 		cout<<line<<"\n";
-    int i;
-    string temp = line.substr(1, 4);
-    while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    startpos = line.find_first_not_of(" ",1);
+    endpos = line.find_first_of(".",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].serialno = stoi(temp);
-    temp = line.substr(8, 19);
-		while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    cout<<item[count].serialno<<endl;
+    startpos = line.find_first_not_of(" ",8);
+    endpos = line.find_first_of("|",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].itemname = temp;
-    temp = line.substr(28, 20);
-		while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    startpos = line.find_first_not_of(" ",28);
+    endpos = line.find_first_of("|",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].manufacturer = temp;
-    temp = line.substr(49, 8);
-		while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    startpos = line.find_first_not_of(" ",49);
+    endpos = line.find_first_of("|",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].quantity = stoi(temp);
     if(item[count].quantity>0)
     item[count].instock = true;
     else
     item[count].instock = false;
-    temp = line.substr(58, 7);
-		while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    startpos = line.find_first_not_of(" ",58);
+    endpos = line.find_first_of("|",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].sales = stoi(temp);
-    temp = line.substr(66, 8);
-		while(temp[i]==' ') {
-      temp.erase(i, 1);
-    }
+    startpos = line.find_first_not_of(" ", 66);
+    endpos = line.find_first_of("|",startpos);
+    temp = line.substr(startpos, endpos-startpos);
     item[count].price = stod(temp);
     count++;
   }
   cout<<"Successfully read from "<<shopname<<"\n"<<endl;
+  fin.close();
 }
 
 void writeinventorytofile(string shopname, commodity *&item, int count)
@@ -447,7 +444,7 @@ void writeinventorytofile(string shopname, commodity *&item, int count)
   commodity x;
   for(int i=0;i<count;i++) {
     x = item[i];
-    fout<<"|"<<right<<setw(5)<<x.serialno<<".|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
+    fout<<"|"<<right<<setw(6)<<x.serialno<<"|"<<setw(19)<<x.itemname<<"|"<<setw(20)<<x.manufacturer
     <<"|"<<setw(8)<<x.quantity<<"|"<<setw(7)<<x.sales<<"|"<<setw(8)<<fixed<<setprecision(2)<<x.price<<"|";
     if(x.instock==0)
     fout<<"   NO|"<<"\n";
@@ -475,10 +472,10 @@ void userchoice(int ch, commodity *&item, int &count, int &sncount, int &size)
 		search(item, count);
 		break;
 		case 5:
-		displayall(item, count);
+		stockchecker(item, count);
 		break;
 		case 6:
-		stockchecker(item, count);
+		displayall(item, count);
 		break;
 		default:
 		cout<<"Invalid choice, try again!"<<"\n";
