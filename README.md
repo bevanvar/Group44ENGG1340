@@ -36,6 +36,7 @@ The program interface is menu-driven, allowing the user to execute functions acc
 ### Instructions
 #### Reasonable Assumptions
 -All data entered must be _case-sensitive_.
+
 -The user has git installed on their system.
 
 #### Execution
