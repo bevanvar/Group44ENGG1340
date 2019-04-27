@@ -35,7 +35,9 @@ The program interface is menu-driven, allowing the user to execute functions acc
 
 ### Instructions
 #### Reasonable Assumptions
--All data entered must be _case-sensitive_.
+-All data must be _case-sensitive_.
+
+-The user will not insert duplicate items (with manufacturers duplicate) as well. The search/update functions can be used instead.
 
 -The user has git installed on their system.
 
