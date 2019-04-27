@@ -14,13 +14,13 @@ Since the repository will be open to the public, anyone can get started with thi
 ### Program Features
 #### Required Features
 1) Search for commodities with different filters  
-2) Insert new commodities with basic information  
+2) Insert new com1modities with basic information  
 3) Delete obsolete commodities  
 4) Update commodity information  
 5) Automatic updation of inventory status based on availability  
 6) Alerts when commodity is out-of-stock
 #### Additional Features
-1) Monitoring of expiry dates of commodities, if any, and alerts for the same  
+) Monitoring of expiry dates of commodities, if any, and alerts for the same  
 2) Analysis of commodities by demand (popularity)  
 
 We aim to complete the **required features** and add any **additional features** that seem feasible as we go about developing our program's code. 
