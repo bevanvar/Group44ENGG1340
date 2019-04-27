@@ -10,3 +10,5 @@ run: inventorysystem
 clean: rm inventorysystem main.o Inventory o
 
 .PHONY: run clean
+
+#enter "make run" in the terminal to build the executable
