@@ -22,8 +22,8 @@ class Inventory
 {
   public:
           //function declaration
-					void intro();
-					void menu();
+	  void intro();
+          void menu();
           void swap(commodity, commodity);
           void sortbypopularity(commodity, int);
           void sortbyserialnumber(commodity, int);
@@ -35,9 +35,9 @@ class Inventory
           void deletion(commodity, int);
           void search(commodity, int);
           void displayall(commodity, int);
-					void stockchecker(commodity, int);
-					void readinventoryfromfile(string, commodity, int);
-					void writeinventorytofile(string, commodity, int);
+	  void stockchecker(commodity, int);
+	  void readinventoryfromfile(string, commodity, int);
+	  void writeinventorytofile(string, commodity, int);
 };
 
 //Note: all the functions are void
@@ -49,12 +49,12 @@ class Inventory
 void intro()
 {
 	cout<<"*********************************************************"<<"\n";
-  cout<<"*************** Welcome To Your Inventory! **************"<<"\n";
-  cout<<"*********************************************************"<<"\n";
-  cout<<"*********************************************************"<<"\n";
-  cout<<"*Bevan Varghese**************************Katyayani Singh*"<<"\n";
-  cout<<"*GROUP 44***************************************ENGG1340*"<<"\n";
-  cout<<"*********************************************************"<<"\n";
+        cout<<"*************** Welcome To Your Inventory! **************"<<"\n";
+        cout<<"*********************************************************"<<"\n";
+        cout<<"*********************************************************"<<"\n";
+        cout<<"*Bevan Varghese**************************Katyayani Singh*"<<"\n";
+        cout<<"*GROUP 44***************************************ENGG1340*"<<"\n";
+        cout<<"*********************************************************"<<"\n";
 }
 
 //main menu for the user
@@ -63,9 +63,9 @@ void intro()
 void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
-  cout<<"4. Search for a commodity (filtered)\n5. Check inventory for stock warnings\n";
+        cout<<"4. Search for a commodity (filtered)\n5. Check inventory for stock warnings\n";
 	cout<<"6. Display all commodities (filtered)\n0. Exit\n";
-  cout<<"Enter your choice:"<<"\n";
+        cout<<"Enter your choice:"<<"\n";
 }
 
 //swapping function to help with sorting
@@ -161,11 +161,11 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
 	if(count==size)
 	increasesize(item, size);
 	string tempname, tempmanu;
-  cout<<"Enter item name:"<<"\n";
+        cout<<"Enter item name:"<<"\n";
 	cin.ignore();
-  getline(cin, tempname);
-  cout<<"Enter manufacturer name:"<<"\n";
-  getline(cin, tempmanu);
+        getline(cin, tempname);
+        cout<<"Enter manufacturer name:"<<"\n";
+        getline(cin, tempmanu);
 	for(int i=0;i<count;i++) {
 		if(item[i].itemname==tempname && item[i].manufacturer==tempmanu) {
 			cout<<"Item already in inventory!";
@@ -174,18 +174,18 @@ void insert(commodity *&item, int &count, int &sncount, int &size)
 	}
 	item[count].itemname = tempname;
 	item[count].manufacturer = tempmanu;
-  cout<<"Enter quantity:"<<"\n";
-  cin>>item[count].quantity;
-  cout<<"Enter price:"<<"\n";
-  cin>>item[count].price;
-  if(item[count].quantity==0)
+        cout<<"Enter quantity:"<<"\n";
+        cin>>item[count].quantity;
+        cout<<"Enter price:"<<"\n";
+        cin>>item[count].price;
+        if(item[count].quantity==0)
 	item[count].instock = 0;
 	else
 	item[count].instock = 1;
 	item[count].sales = 0;
 	item[count].serialno = sncount;
 	count++;
-  sncount++;
+        sncount++;
 }
 
 //checks the inventory for commodities out-of-stock/nearly out-of-stock
@@ -265,8 +265,8 @@ void update(commodity *&item, int count)
 		}
 	}
 	for(int i=0;i<count;i++) {
-    warn(item[i]);
-  }
+                warn(item[i]);
+        }
 }
 
 //deletes an existing commodity in the inventory
@@ -398,8 +398,8 @@ void search(commodity *&item, int count)
 		}
 	}
 	for(int i=0;i<count;i++) {
-    warn(item[i]);
-  }
+                warn(item[i]);
+        }
 }
 
 //displays all the commodities in the inventory
@@ -442,8 +442,8 @@ void displayall(commodity *&item, int count)
 	else
 	cout<<"There are "<<count<<" commodities in the inventory.\n";
 	for(int i=0;i<count;i++) {
-    warn(item[i]);
-  }
+              warn(item[i]);
+        }
 }
 
 //imports an inventory from an existing file named after the shop
