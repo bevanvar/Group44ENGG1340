@@ -10,32 +10,42 @@ _What our program does?_ Sets up a commodity inventory system for stock manageme
 _Whom does it help?_ The inventory management chain of a business on the large scale, all the way down to small family businesses.  
 _Why is it helpful?_ Optimises and ensures management of inventory in an efficient manner.  
 Since the repository will be open to the public, anyone can get started with this system when the need arises (after the program has been fully developed, of course).
-#### Reasonable Assumptions
-All data entered must be case-sensitive.
-
 
 ### Program Features
 #### Required Features
-1) Insert new com1modities with basic information  
-2) Update commodity information  
-3) Delete obsolete commodities  
-4) Search for commodities with different filters
+1) **Insert** new commodities with basic information  
+2) **Update** commodity information  
+3) **Delete** obsolete commodities  
+4) **Search** for commodities with different filters
    - serial number
    - commodity name
    - manufacturer name
    - stock status
-5) Automatic updation of inventory status based on availability  
-6) Scan the inventory to check if any commodity 
+5) **Automatic updation** of inventory status based on availability  
+6) Scan the inventory to **check** if any commodity 
    - is out of stock
    - nearly out of stock
 #### Additional Features 
-1) Displays the whole inventory in order of serial number along with the number of commodities.
-2) Displays the whole inventory in order of demand (popularity based on number of sales) along with the number of commodities. 
-3) Imports an existing inventory from a .txt file named after the shop.
-4) Writes the updated inventory to a .txt file named after the shop.
+1) **Display** the whole inventory in order of **serial number** along with the number of commodities.
+2) **Display** the whole inventory in order of **demand** (popularity based on number of sales) along with the number of commodities. 
+3) **Import** an existing inventory from a .txt file named after the shop.
+4) **Export** the updated inventory to a .txt file named after the shop.
 
 
 ### Instructions
+#### Reasonable Assumptions
+All data entered must be _case-sensitive_.
+The user has git installed on their system.
+
+#### Execution
+(i) Clone our repository onto your system. Open up the terminal window and execute the following command:
+   > git clone https://github.com/katyayanisingh/Group44ENGG1340
+
+(ii) Navigate to the directory of the repository using the _cd_ command.
+
+(iii) Run the following command:
+   
+
 
 Katyayani Singh: ksingh@connect.hku.hk  
 Bevan Varghese: bevanvar@connect.hku.hk
