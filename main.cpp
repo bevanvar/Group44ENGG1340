@@ -1,10 +1,12 @@
 #include "Inventory.h"
+//including the header file with all required functions
 
 int main()
 {
+  //initialising inventory size, serialnumber and number of commodities
   int size = 10, sncount = 1, count = 0, pref, ch;
   string shopname;
-	commodity *item = new commodity[size];
+	commodity *item = new commodity[size]; //dynamic array of commodities
   intro();
   cout<<"Enter shop name:\n";
   getline(cin, shopname);
@@ -49,7 +51,7 @@ int main()
       cin>>ch;
     }
     writeinventorytofile(shopname, item, count);
-    cout<<"Goodbye!"<<endl;
+    cout<<"Goodbye, have a nice day!"<<endl;
   }
   delete [] item;
   return 0;
