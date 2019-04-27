@@ -21,8 +21,31 @@ int main()
     menu();
     cin>>ch;
     while(ch!=0) {
-       userchoice(ch, item, count, sncount, size);
-       menu();
+      switch(ch)
+      {
+       case 1:
+       insert(item, count, sncount, size);
+       break;
+       case 2:
+       update(item, count);
+       break;
+       case 3:
+       deletion(item, count);
+       break;
+       case 4:
+       search(item, count);
+       break;
+       case 5:
+       stockchecker(item, count);
+       break;
+       case 6:
+       displayall(item, count);
+       break;
+       default:
+       cout<<"Invalid choice, try again!"<<"\n";
+       break;
+      }
+      menu();
       cin>>ch;
     }
     writeinventorytofile(shopname, item, count);
