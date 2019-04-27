@@ -44,6 +44,7 @@ The user has git installed on their system.
 (ii) Navigate to the directory of the repository using the _cd_ command.
 
 (iii) Run the following command:
+   > make 
    
 
 
