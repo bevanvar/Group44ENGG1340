@@ -37,8 +37,6 @@ The program interface is menu-driven, allowing the user to execute functions acc
 #### Reasonable Assumptions
 -All data must be _case-sensitive_.
 
--The user will not insert duplicates (using the _insert_ function to insert a commodity with the same _item name_ and _manufacturer_ as an existing commodity). The _search_ function can be used to check if such an item exists and then _updated_ accordingly.
-
 -The user has git installed on their system.
 
 #### Execution
