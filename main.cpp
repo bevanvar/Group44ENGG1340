@@ -1,5 +1,4 @@
 #include "Inventory.h"
-#include <fstream>
 
 int main()
 {

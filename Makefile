@@ -1,18 +1,15 @@
-
+Inventory.o: Inventory.cpp Inventory.h
+		g++ -c Inventory.cpp
 
 main.o: main.cpp Inventory.h
-	g++ -c main.cpp
+		g++ -c main.cpp
 
-filing.o: filing.cpp AccountHolder.h
-	g++ -c filing.cpp
+inventorysystem: Inventory.o main.o
+		g++ Inventory.o main.o -o $@
 
-executable: main.o filing.o 
-	g++ main.o filing.o -o $@
+run: inventorysystem
+		./inventorysystem
 
-run: executable
-	./executable
-  
-clean:
-	rm executable main.o filing.o
+clean: rm inventorysystem main.o Inventory o
 
 .PHONY: run clean
