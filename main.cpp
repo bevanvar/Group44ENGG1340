@@ -8,10 +8,9 @@ int main()
 	commodity *item = new commodity[size];
   intro();
   cout<<"Enter shop name:\n";
-  cin.ignore();
   getline(cin, shopname);
-  shopname+=".txt";
-  cout<<"1. Set up new inventory\n2. Import inventory from file\nEnter your preference:\n"<<endl;
+  shopname = shopname+".txt";
+  cout<<"1. Set up new inventory\n2. Import inventory from file\nEnter your preference:"<<endl;
   cin>>pref;
   if(pref!=1 && pref!=2) {
     cout<<"Invalid choice, closing now."<<endl;
@@ -19,6 +18,7 @@ int main()
   else {
     if(pref==2) {
       readinventoryfromfile(shopname, item, count);
+      cout<<shopname<<endl;
     }
     menu();
     cin>>ch;
@@ -28,6 +28,8 @@ int main()
       cin>>ch;
     }
     writeinventorytofile(shopname, item, count);
+    cout<<shopname<<endl;
+    cout<<"Goodbye!"<<endl;
   }
   delete [] item;
   return 0;
