@@ -18,7 +18,6 @@ int main()
   else {
     if(pref==2) {
       readinventoryfromfile(shopname, item, count);
-      cout<<shopname<<endl;
     }
     menu();
     cin>>ch;
@@ -28,7 +27,6 @@ int main()
       cin>>ch;
     }
     writeinventorytofile(shopname, item, count);
-    cout<<shopname<<endl;
     cout<<"Goodbye!"<<endl;
   }
   delete [] item;

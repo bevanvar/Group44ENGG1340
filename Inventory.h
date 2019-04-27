@@ -390,37 +390,26 @@ void readinventoryfromfile(string shopname, commodity *&item, int &count)
   getline(fin, line);
   while(getline(fin, line))
   {
+		cout<<line<<"\n";
     int i;
     string temp = line.substr(1, 4);
-    for(i=0;i<4;i++) {
-      if(temp[i]==' ')
+    while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].serialno = stoi(temp);
     temp = line.substr(8, 19);
-    for(i=0;i<19;i++) {
-      if(temp[i]==' ')
+		while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].itemname = temp;
     temp = line.substr(28, 20);
-    for(i=0;i<20;i++) {
-      if(temp[i]==' ')
+		while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].manufacturer = temp;
     temp = line.substr(49, 8);
-    for(i=0;i<8;i++) {
-      if(temp[i]==' ')
+		while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].quantity = stoi(temp);
     if(item[count].quantity>0)
@@ -428,19 +417,13 @@ void readinventoryfromfile(string shopname, commodity *&item, int &count)
     else
     item[count].instock = false;
     temp = line.substr(58, 7);
-    for(i=0;i<7;i++) {
-      if(temp[i]==' ')
+		while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].sales = stoi(temp);
     temp = line.substr(66, 8);
-    for(i=0;i<8;i++) {
-      if(temp[i]==' ')
+		while(temp[i]==' ') {
       temp.erase(i, 1);
-      else
-      break;
     }
     item[count].price = stod(temp);
     count++;
