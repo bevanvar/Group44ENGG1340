@@ -1,5 +1,5 @@
 ## GROUP 44 - ENGG1340
-This is the readme file for Group 44's (ENGG1340 - Computer Programming 2) repository. The group members are Bevan Varghese and Katyayani Singh.
+This is the readme file for Group 44's (ENGG1340 - Computer Programming 2) repository. The group members are Bevan Varghese and Katyayani Singh. 
 
 ### Problem Statement
 Management of stock is as important an aspect of a company's functioning as any other. "Supply and demand" is a phrase closely associated with the performance of a brand in the market - without supply, there would be no demand. Our program aims to optimize the process of managing inventory, with the help of a **commodity inventory system**. We aim to build the system such that it allows staff to keep a track of commodity inventory in the company's retail outlets, and efficiently carry out tasks to ensure the smooth running of delivery and sales.
@@ -35,7 +35,9 @@ The program interface is menu-driven, allowing the user to execute functions acc
 
 ### Instructions
 #### Reasonable Assumptions
--All data entered must be _case-sensitive_.
+-All data must be _case-sensitive_.
+
+-The user will not insert duplicates (using the _insert_ function to insert a commodity with the same _item name_ and _manufacturer_ as an existing commodity). The _search_ function can be used to check if such an item exists and then _updated_ accordingly.
 
 -The user has git installed on their system.
 
