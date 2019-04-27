@@ -64,7 +64,7 @@ void menu()
 {
 	cout<<"\n1. Insert a commodity\n2. Update a commodity\n3. Delete a commodity\n";
   cout<<"4. Search for a commodity (filtered)\n5. Check inventory for stock warnings\n";
-	cout<<"6. Display all commodities (filtered\n0. Exit\n";
+	cout<<"6. Display all commodities (filtered)\n0. Exit\n";
   cout<<"Enter your choice:"<<"\n";
 }
 
@@ -458,12 +458,10 @@ void readinventoryfromfile(string shopname, commodity *&item, int &count)
   getline(fin, line);
   while(getline(fin, line))
   {
-		cout<<line<<"\n";
     startpos = line.find_first_not_of(" ",1);
     endpos = line.find_first_of(".",startpos);
     temp = line.substr(startpos, endpos-startpos);
     item[count].serialno = stoi(temp);
-    cout<<item[count].serialno<<endl;
     startpos = line.find_first_not_of(" ",8);
     endpos = line.find_first_of("|",startpos);
     temp = line.substr(startpos, endpos-startpos);
