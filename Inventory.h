@@ -38,8 +38,6 @@ class Inventory
 					void writeinventorytofile(string, commodity, int);
 };
 
-#include "Inventory.h"
-
 void intro()
 {
 	cout<<"*********************************************************"<<"\n";
