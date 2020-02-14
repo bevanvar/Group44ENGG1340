@@ -51,6 +51,6 @@ The program interface is menu-driven, allowing the user to execute functions acc
 To use our sample input file, run the program and enter "sample input" as the shop name.
 
 #### Contact Us
-Bevan Varghese: bevanvar@connect.hku.hk
+Bevan Varghese: bevanvar@connect.hku.hk  
 Katyayani Singh: ksingh@connect.hku.hk  
 
