@@ -1,4 +1,4 @@
-## GROUP 44 - ENGG1340
+## Commodity Inventory System
 This is the readme file for Group 44's (ENGG1340 - Computer Programming 2) repository. The group members are Bevan Varghese and Katyayani Singh. 
 
 ### Problem Statement
